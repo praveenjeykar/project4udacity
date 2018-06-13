@@ -1,0 +1,58 @@
+<html>
+
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+
+<body><h1> Edit Gun Model </h1>
+
+<form action="#" method = 'post'>
+
+
+	<p>Name:</p>
+		<input type ='text' size='30' name='name' placeholder = '{{item.name }}'>
+	<p>Description:</p>
+		<input type ='text' size='30' name='description' placeholder = '{{item.description}}'>
+	<p>Price:</p>
+		<input type ='text' size='30' name='price' placeholder = '{{item.price}}'>
+	<p>Course:<p>
+
+	{% if item.course == 'Pistol' %}
+		<dd><input type ='radio' name='course' value='Pistol'checked >Pistol</dd>
+	{%else%}
+	<dd><input type ='radio' name='course' value='Pistol' >Pistol</dd>
+    {% endif %}
+
+    {% if item.course == 'Launcher' %}
+       <dd><input type ='radio' name='course' value='Launcher' checked>Launcher</dd>
+
+    {%else%}
+		<dd><input type ='radio' name='course' value='Launcher'>Launcher</dd>
+    {% endif %}
+
+	{% if item.course == 'Rifle'%}
+		<dd><input type ='radio' name='course' value='Rifle'checked >Rifle</dd>
+
+	{% else %}
+	   <dd><input type ='radio' name='course' value='Rifle'>Rifle</dd>
+
+	{% endif %}
+
+
+	{%if item.course =='Sniper'%}
+		<dd><input type ='radio' name='course' value='Sniper'checked >Sniper</dd>
+	{% else %}
+		<dd><input type ='radio' name='course' value='Sniper'>Sniper</dd>
+	{% endif %}
+
+
+
+<input type='submit' value='Edit'>
+
+
+<a href ="/guncompany"> Cancel </a>
+
+
+</form>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<html>
+	
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	<body>
+		<div class = 'pane'>
+		<h1>{{ guncompany.name }}</h1>
+		
+		{% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% if items !=[] %}
+
+		<a href = "{{url_for('newGunModel', guncompany_id = guncompany.id )}}">Create New Model</a>
+	</br></br>
+
+	<h2>Pistol</h2>
+
+		{% for i in items %}
+		{% if i.course == 'Pistol' %}
+
+		<p>{{i.name}}</p>
+	
+
+		<p>{{i.description}}</p>
+	
+
+		<p>{{i.price}}</p>
+	
+		<a href='{{url_for('editGunModel', guncompany_id = guncompany.id, menu_id=i.id ) }}' >Edit</a>
+	</br>
+	<a href='{{url_for('deleteGunModel', guncompany_id = guncompany.id, menu_id=i.id ) }}' >Delete</a>
+</br>
+</br>
+		{% endif %}
+
+		{% endfor %}
+
+		
+
+		</br></br>
+
+	<h2>Launcher</h2>
+
+		{% for i in items %}
+		{% if i.course == 'Launcher' %}
+
+		<p>{{i.name}}</p>
+	
+
+		<p>{{i.description}}</p>
+	
+
+		<p>{{i.price}}</p>
+	
+		<a href='{{url_for('editGunModel', guncompany_id = guncompany.id, menu_id=i.id ) }}' >Edit</a>
+	</br>
+	<a href='{{url_for('deleteGunModel',  guncompany_id = guncompany.id, menu_id=i.id ) }}' >Delete</a>
+</br>
+</br>
+        {% endif %}
+
+		{% endfor %}
+		
+		
+
+		</br></br>
+
+	<h2>Rifle</h2>
+
+		{% for i in items %}
+		{% if i.course == 'Rifle' %}
+
+		<p>{{i.name}}</p>
+	
+
+		<p>{{i.description}}</p>
+	
+
+		<p>{{i.price}}</p>
+	
+		<a href='{{url_for('editGunModel', guncompany_id = guncompany.id, menu_id=i.id ) }}' >Edit</a>
+	
+	<a href='{{url_for('deleteGunModel', guncompany_id = guncompany.id, menu_id=i.id ) }}' >Delete</a>
+</br>
+</br>
+		{% endif %}
+
+		{% endfor %}
+		
+		
+
+		</br></br>
+
+	<h2>Sniper</h2>
+
+		{% for i in items %}
+		{% if i.course == 'Sniper' %}
+
+		<p>{{i.name}}</p>
+	
+
+		<p>{{i.description}}</p>
+	
+
+		<p>{{i.price}}</p>
+
+		<a href='{{url_for('editGunModel', guncompany_id = guncompany.id, menu_id=i.id ) }}' >Edit</a>
+	</br>
+	<a href='{{url_for('deleteGunModel', guncompany_id = guncompany.id, menu_id=i.id ) }}' >Delete</a>
+</br>
+</br>
+{% endif %}
+
+		{% endfor %}
+		
+		
+
+		{% else %}
+		<p> You currently have no gun models. <p>
+		<a href = "{{url_for('newGunModel', guncompany_id = guncompany.id )}}">Create Gun Model</a>
+			{% endif %}
+</div>
+	</body>
+
+</html>
